@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blissworld</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="side-nav">
+            <ul>
+                <li>
+                    <a href="https://ifeanyi-ani.github.io/clone_blissworld_webpage/login.html">
+                        <span class="icon">
+                            <ion-icon name="globe-outline"></ion-icon>
+                        </span>
+                        <span class="title">Blissworld.com</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="users.html">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Users</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="products.html">
+                        <span class="icon">
+                            <ion-icon name="cart-outline"></ion-icon>
+                        </span>
+                        <span class="title">Products</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main">
+            <div class="topnav">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+
+                <div class="account-container">
+                    <img src="images/profile.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="card-box">
+                <a href="users.html" class="card">
+                    <div>
+                        <div class="numbers">67</div>
+                        <div class="cardName">User's</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                </a>
+
+                <a href="https://ifeanyi-ani.github.io/clone_blissworld_webpage/register.html" class="card">
+                    <div>
+                        <div class="numbers">NEW</div>
+                        <div class="cardName">User</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="person-add-outline"></ion-icon>
+                    </div>
+                </a>
+
+                <a href="products.html" class="card">
+                    <div>
+                        <div class="numbers">56</div>
+                        <div class="cardName">Product's</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                </a>
+
+                <a href="#" class="card" id="newProduct">
+                    <div>
+                        <div class="numbers">NEW</div>
+                        <div class="cardName">Product</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="create-outline"></ion-icon>
+                    </div>
+                </a>
+            </div>
+
+            <div class="product">
+                <div class="recent-product">
+                    <div class="card-header">
+                        <h2>Recent Product</h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Price</td>
+                                <td>Category</td>
+                                <td>Quantity</td>
+                            </tr>
+                        </thead>
+
+                        <tbody id="quickView">
+                           
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="recent-users">
+                    <div class="card-header">
+                        <h2>Recent Users</h2>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="images/profile.jpg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>name<br> <span>country</span></h4>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="get-product-data">
+                <button type="button" class="closs" id="close"><ion-icon name="close-outline"></ion-icon></button>
+                <form action="">
+                    <div>Enter the required details:</div>
+                    <input type="text" placeholder="please enter product name" id="productName">
+                    <label for="" id="productNameError" class="error"></label>
+                    <select name="" id="productCategory">
+                        <option value="">select one</option>
+                    </select>
+                    <label for="" id="productCategoryError" class="error"></label>
+                    <input type="number" placeholder="Please Enter Product Price" id="productPrice">
+                    <label for="" id="productPriceError" class="error"></label>
+                    <input type="number" placeholder="Please Enter Product Quantity in Store" id="productQuantity">
+                    <label for="" id="productQuantityError" class="error"></label>
+                    <input type="text" placeholder="What is the Product for:" id="productDiscription">
+                    <label for="" id="productDiscriptionError" class="error"></label>
+                    <input type="file" id="productSample">
+                    <label for="" id="productSampleError" class="error"></label>
+
+                    <button type="button" id="addProBtn">ADD PRODUCT</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+  
+    <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dasboard.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
