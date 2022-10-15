@@ -75,7 +75,7 @@
             <div class="card-box">
                 <a href="users.html" class="card">
                     <div>
-                        <div class="numbers">67</div>
+                        <div class="numbers userNo">0</div>
                         <div class="cardName">User's</div>
                     </div>
 
@@ -97,7 +97,7 @@
 
                 <a href="products.html" class="card">
                     <div>
-                        <div class="numbers">56</div>
+                        <div class="numbers productItems">56</div>
                         <div class="cardName">Product's</div>
                     </div>
 
@@ -146,7 +146,8 @@
                         <h2>Recent Users</h2>
                     </div>
 
-                    <table>
+                    <table class="dashboardUserView">
+                        <!-- note javascript will overite this -->
                         <tr>
                             <td width="60px">
                                 <div class="imgBx"><img src="images/profile.jpg" alt=""></div>
@@ -177,6 +178,9 @@
                     <label for="" id="productDiscriptionError" class="error"></label>
                     <input type="file" id="productSample">
                     <label for="" id="productSampleError" class="error"></label>
+                    <div class="preview">
+                        <img src="" alt="" width="100px" height="100px" id="imgPreview">
+                    </div>
 
                     <button type="button" id="addProBtn">ADD PRODUCT</button>
                 </form>

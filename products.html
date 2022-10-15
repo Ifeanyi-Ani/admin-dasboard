@@ -81,7 +81,7 @@
             <div class="card-box">
                 <a href="products.html" class="card">
                     <div>
-                        <div class="numbers">56</div>
+                        <div class="numbers productItems" id="productItems">56</div>
                         <div class="cardName">Product's</div>
                     </div>
 
@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div class="get-product-data">
-                <button type="button" class="closs" id="close"><ion-icon name="close-outline"></ion-icon></button>
+                <button type="button" class="closs close" id="close"><ion-icon name="close-outline"></ion-icon></button>
                 <form action="">
                     <div>Enter the required details:</div>
                     <input type="text" placeholder="please enter product name" id="productName">
@@ -142,9 +142,17 @@
                     <label for="" id="productQuantityError" class="error"></label>
                     <input type="text" placeholder="What is the Product for:" id="productDiscription">
                     <label for="" id="productDiscriptionError" class="error"></label>
-                    <input type="file" id="productSample" >
-                    <img src="" alt="" width="100px" height="100px" id="imgPreview">
+                    <select name="" id="productSample">
+                        <option value="">please select image</option>
+                        <option value="./images/fall_img1.webp">product sample</option>
+                        <option value="./images/fall_img2.webp">product sample</option>
+                        <option value="./images/fall_img3.webp">product sample</option>
+                        <option value="./images/fall_img4.webp">product sample</option>
+                    </select>                
                     <label for="" id="productSampleError" class="error"></label>
+                    <div class="preview">
+                        <img src="" alt="" width="100px" height="100px" id="imgPreview">
+                    </div>
 
                     <button type="button" id="addProBtn">ADD PRODUCT</button>
                 </form>

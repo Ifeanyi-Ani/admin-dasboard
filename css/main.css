@@ -288,12 +288,13 @@ body {
   display: grid;
   -ms-grid-columns: 2fr 1fr;
       grid-template-columns: 2fr 1fr;
-  min-height: 200px;
+  grid-auto-rows: minmax(100px);
   grid-gap: 30px;
 }
 
 .page-container .main .product .recent-product {
   position: relative;
+  align-self: flex-start;
   display: -ms-grid;
   display: grid;
   background: #fff;
@@ -350,8 +351,8 @@ body {
 
 .page-container .main .product table tbody tr td .img-con {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 100px;
   border-radius: 50px;
   overflow: hidden;
 }
@@ -370,6 +371,7 @@ body {
   position: relative;
   display: -ms-grid;
   display: grid;
+  align-self: flex-start;
   padding: 20px;
   background: #fff;
   -webkit-box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -504,6 +506,36 @@ body {
   margin-top: 5px;
 }
 
+.page-container .main .user-card .details .btnOp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+.page-container .main .user-card .details .btnOp button {
+  background-color: #fff;
+  border: 1px solid #102227;
+  padding: 5px;
+}
+
+.page-container .main .user-card .details .btnOp button:hover {
+  background-color: #102227;
+  color: white;
+}
+
+.page-container .main .user-card .details .btnOp button:active {
+  background-color: rgba(16, 34, 39, 0.8);
+  -webkit-transform: translate(1px);
+          transform: translate(1px);
+}
+
 .page-container .main .user-card .details div span {
   font-size: 1.5rem;
   color: #102227;
@@ -524,7 +556,7 @@ body {
 .page-container .main .get-product-data .closs {
   position: absolute;
   right: 15px;
-  top: 0;
+  top: 80px;
   width: 30px;
   height: 30px;
   color: #fff;
@@ -614,6 +646,10 @@ body {
   -webkit-transform: translate(1px);
           transform: translate(1px);
   background-color: rgba(16, 34, 39, 0.8);
+}
+
+.page-container .main .get-product-data form .preview {
+  margin: 15px auto 0;
 }
 
 @media (max-width: 1200px) {
