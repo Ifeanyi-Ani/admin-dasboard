@@ -652,6 +652,100 @@ body {
   margin: 15px auto 0;
 }
 
+.page-container .main .formUser {
+  width: 80%;
+  background-color: rgba(16, 34, 39, 0.8);
+  padding: 48px;
+  border-radius: 25px;
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  margin: auto;
+}
+
+.page-container .main .formUser .close {
+  position: absolute;
+  right: 15px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  background-color: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+  border: none;
+  -webkit-box-shadow: 0 7px 25px rgba(153, 153, 153, 0.8);
+          box-shadow: 0 7px 25px rgba(153, 153, 153, 0.8);
+  border-radius: 25px;
+}
+
+.page-container .main .formUser form {
+  width: 98%;
+  background-color: rgba(153, 153, 153, 0.4);
+  margin: auto;
+  padding: 18px;
+  border-radius: 10px;
+}
+
+.page-container .main .formUser form label {
+  display: block;
+  margin: auto;
+  width: 80%;
+  color: red;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.page-container .main .formUser form input {
+  display: block;
+  margin: auto;
+  width: 80%;
+  height: 38px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #102227;
+  padding: 10px;
+  outline: none;
+}
+
+.page-container .main .formUser form button {
+  display: block;
+  width: 180px;
+  height: 50px;
+  color: #102227;
+  border: 0;
+  padding: 5px;
+  margin: 20px auto;
+  font-size: 18px;
+  -webkit-box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.page-container .main .formUser form button:hover {
+  background-color: #102227;
+  color: #fff;
+  -webkit-box-shadow: 0 7px 25px rgba(16, 34, 39, 0.8);
+          box-shadow: 0 7px 25px rgba(16, 34, 39, 0.8);
+}
+
+.page-container .main .formUser form button:active {
+  -webkit-transform: translate(1px);
+          transform: translate(1px);
+  background-color: rgba(16, 34, 39, 0.8);
+}
+
 @media (max-width: 1200px) {
   .page-container .main .user-card-box {
     -ms-grid-columns: (1fr)[3] !important;

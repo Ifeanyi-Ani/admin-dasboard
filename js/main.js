@@ -23,12 +23,12 @@ let addProduct=$("#addProBtn");
 
 let userCard=$("#userCard");
 
-let dasboardProductView=$("#quickView");
+let dasboardProductView=$(".quickView");
 let dasboardUserView=$(".dashboardUserView");
 
 
 let productDetails=[];
-let prodcutCatData=["choose category", "Originals", "Fall Favorite","Bestsellers","cleansers & Moistures"]
+let prodcutCatData=["Originals", "Fall Favorite","Bestsellers","cleansers & Moistures"]
 let editedIndex;
 
 
@@ -126,7 +126,7 @@ function validateProductForm(){
   }
   if(productSamp.val()==""){
     productSampleError.html("<i>please enter the product name</i>");
-    productSample.css("outline","3px solid red");
+    productSamp.css("outline","3px solid red");
   }else{
     productSampleError.html("");
     productSamp.css("outline","none");
@@ -155,8 +155,6 @@ $.ajax({
   url:"http://159.65.21.42:9000/create/product",
   data:productObj,
   success:function(response){
-    console.log(response);
-
     if(response["error"]){
       alert(response["error"])
     }else{
@@ -179,12 +177,12 @@ function displayProduct(){
     type:"get",
     url:"http://159.65.21.42:9000/products",
     success:function(response){
-      console.log(response);
+      console.log(response)
       productDetails=response
       productDetails=productDetails.reverse()
-      $(".productItems").text(`${productDetails.length}`)
       let productView="";
       for(let i=0;i<productDetails.length;i++){
+        if(productDetails[i]["category"]=="Bestsellers" ||productDetails[i]["category"]=="Fall Favorite"||productDetails[i]["category"]=="Originals"||productDetails[i]["category"]=="cleansers & Moistures" ){
         productView+=` <tr>
     <td>${i+1}</td>
     <td>${productDetails[i]["name"]}</td>
@@ -198,7 +196,8 @@ function displayProduct(){
     <td><a href="#" class="edit-btn" index="${i}"><ion-icon name="pencil-outline"></ion-icon></a></td>
     <td><a href="#" class="delete-btn" index="${i}"><ion-icon name="trash-outline"></ion-icon></a></td>
     </tr>`
-    
+    $(".productItems").text(`${productDetails.length}`)
+        }
       }
       productsView.html(productView);
     },
@@ -213,7 +212,7 @@ function deleteProduct(){
     type:"delete",
     url:"http://159.65.21.42:9000/product/"+productDetails[i]["_id"],
     success:function(response){
-      console.log(response);
+      
   
       if(response["success"]){
         alert(`${response["success"]}`)
@@ -244,7 +243,7 @@ productDiscription.val(productDetails[editedIndex]["description"]);
 function updateProduct(){
  let reviewProduct={
     "image": productSamp.val(),
-    "product_id":"5ee8c74752307a08249b2970",
+    "product_id":productDetails[editedIndex]["_id"],
     "name": productName.val(),
     "category": productCategory.val(),
     "price": productPrice.val(),
@@ -253,10 +252,10 @@ function updateProduct(){
   };
   $.ajax({
     type:"put",
-    url:"http://159.65.21.42:9000/update/product"+productDetails[editedIndex],
+    url:"http://159.65.21.42:9000/update/product",
     data:reviewProduct,
     success:function(response){
-      console.log(response);
+      
   
       if(response["error"]){
         alert(response["error"])
@@ -278,7 +277,71 @@ function updateProduct(){
 }
 
 // for managing user
+let formUser=$("#formUser")
+let nameNerror = $("#nameNerror");
+let nameN = $("#nameN");
+let phoneNerror = $("#phoneNerror");
+let phoneN = $("#phoneN");
+let EmailNerror = $("#EmailNerror");
+let EmailN = $("#EmailN");
+let passwordNerror = $("#passwordNerror");
+let passwordN = $("#passwordN");
+let confirmNerror = $("#confirmNerror");
+let confirmN = $("#confirmN");
+let updatUser = $("#updatUser");
+let idex;
 
+formUser.hide();
+$("#editUser").on("click",()=>formUser.show());
+$("#exit").on("click",()=>formUser.hide())
+
+
+function validateUpdateInfo(){
+  if (nameN.val()==""){
+    nameNerror.html("field is required")
+    nameN.css("outline","3px solid red");
+  }else{
+    nameNerror.html("");
+    nameN.css("outline","none");
+  }
+  if (phoneN.val()==""){
+    phoneNerror.html("field is required")
+    phoneN.css("outline","3px solid red");
+  }else{
+    phoneNerror.html("");
+    phoneN.css("outline","none");
+  }
+  if (EmailN.val()==""){
+    EmailNerror.html("field is required")
+    EmailN.css("outline","3px solid red");
+  }else{
+    EmailNerror.html("");
+    EmailN.css("outline","none");
+  }
+  if (passwordN.val()==""){
+    passwordNerror.html("field is required")
+    passwordN.css("outline","3px solid red");
+  }else{
+    passwordNerror.html("");
+    passwordN.css("outline","none");
+  }
+  if (confirmN.val()!=passwordN.val()){
+    confirmNerror.html("password does not match")
+    confirmN.css("outline","3px solid red");
+  }else{
+    confirmNerror.html("");
+    confirmN.css("outline","none");
+  }
+  if(nameN.val()!=""&&
+    phoneN.val()!=""&&
+    EmailN.val()!=""&&
+    passwordN.val()!=""&&
+    confirmN.val()===passwordN.val()){
+      if (idex != null){
+        loadUpdateUser();
+      }
+    }
+}
 function displayUser(){
 
   userCard.html(" <h2>Loading data ..........</h2>")
@@ -301,7 +364,7 @@ function displayUser(){
             <div class="email">${userDetails[i]["email"]}</div>
             <div class="phone">${userDetails[i]["phone"]}</div>
             <div class="address">No 34 adewakeli street Onisha</div>
-            <div class="btnOp"><button type="button" class="editUser" index="${i}">EDIT</button><button type="button" class="deleteUser" index="${i}">REMOVE</button></div>
+            <div class="btnOp"><button type="button" id="editUser" class="editUser" index="${i}">EDIT</button><button type="button" class="deleteUser" index="${i}">REMOVE</button></div>
         </div>
     </div>`
     }
@@ -318,7 +381,7 @@ function displayUser(){
       type:"delete",
       url:"http://159.65.21.42:9000/user/"+userDetails[i]["_id"],
       success:function(response){
-        console.log(response);
+        
     
         if(response["success"]){
           alert(`${response["success"]}`)
@@ -326,13 +389,54 @@ function displayUser(){
         }
       },
       error:function(error){
-        console.log(error);
         alert(error.statusText)
       }
     })
 
   }
+  function changeInfo(){
+    idex=$(this).attr("index");
+    formUser.show();
+
+    nameN.val(userDetails[idex]["name"]);
+    EmailN.val(userDetails[idex]["email"]);
+    phoneN.val(userDetails[idex]["phone"]);
+    passwordN.val(userDetails[idex]["password"]);
+  }
+  function loadUpdateUser(){
+    let reviewUser={
+      "name": nameN.val(),
+      "email": EmailN.val(),
+      "phone": phoneN.val(),
+      "password": passwordN.val(),
+    };
+    $.ajax({
+      type:"put",
+      url:"http://159.65.21.42:9000/user/"+userDetails[idex]["_id"],
+      data:reviewUser,
+      success:function(response){
+        
+    
+        if(response["error"]){
+          alert(response["error"])
+        }else{
+          alert(`${response["name"]} successfully updated`)
+          displayProduct();
+         formUser.hide();
+        idex=null;
+        }
+  },
+      error:function(error){
+      console.log(error);
+      alert(error.statusText)
+  }
+})
+
+}
+  updatUser.on("click", validateUpdateInfo)
   userCard.on("click",".deleteUser", removeUser)
+  userCard.on("click",".editUser", changeInfo)
+  
 
   // dash board view
  
@@ -345,18 +449,18 @@ function displayUser(){
       success:function(response){
         productDetailsDashboard=response
         productDetailsDashboard=productDetailsDashboard.reverse()
-        $(".productItems").text(`${productDetailsDashboard.length}`)
         let quickView="";
-        for (let i=0; i<20; i++){
+        for (let i=0; i<productDetailsDashboard.length; i++){
+          if(productDetailsDashboard[i]["category"]=="Bestsellers" ||productDetailsDashboard[i]["category"]=="Fall Favorite"||productDetailsDashboard[i]["category"]=="Originals"||productDetailsDashboard[i]["category"]=="cleansers & Moistures" ){
+            $(".productItems").text(`${productDetailsDashboard.length}`)
           quickView+=`<tr>
           <td>${productDetailsDashboard[i]["name"]}</td>
           <td>$${productDetailsDashboard[i]["price"]}</td>
           <td>${productDetailsDashboard[i]["category"]}</td>
           <td>${productDetailsDashboard[i]["quantity"]}</td>
       </tr>`
-      
+          }
         };
-      
       dasboardProductView.html(quickView);
       },
       error:function(error){
